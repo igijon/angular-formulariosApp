@@ -35,7 +35,8 @@
                  ngModel
                  name="precio"
                  placeholder="Precio del producto"
-                 required>
+                 required
+                 min="0">
           <span class="form-text text-danger"
                 *ngIf="precioValido()">
             Precio mayor o igual a cero
@@ -51,6 +52,8 @@
                  class="form-control"
                  ngModel
                  name="existencias"
+                 customMin
+                 [minimo]="0"
                  placeholder="Existencias del producto">
         </div>
       </div>
@@ -82,5 +85,9 @@
 
     <span>Value</span>
     <pre>{{ miFormulario.value | json }}</pre>
+
+    <span>CustomDirective</span>
+    <pre>{{ miFormulario.controls?.['existencias']?.errors | json }}</pre>
+
   </div>
 </div>
