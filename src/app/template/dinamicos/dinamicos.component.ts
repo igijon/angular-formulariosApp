@@ -24,6 +24,17 @@ export class DinamicosComponent {
       { id: 2, nombre: 'DeathStranding'},
     ]
   };
+  nuevoJuego: string = '';
+
+  agregarJuego() {
+    const nuevoFavorito: Favorito = {
+      nombre: this.nuevoJuego,
+      id: this.persona.favoritos.length + 1
+      //Los id vienen de BDD por lo qu estoy es sólo un ejemplo
+    }
+    this.persona.favoritos.push({...nuevoFavorito});
+    this.nuevoJuego='';
+  }
 
   eliminar(index: number) {
     this.persona.favoritos.splice(index, 1);
@@ -31,6 +42,5 @@ export class DinamicosComponent {
 
   guardar() {
     console.log('Formulario posteado');
-
   }
 }
