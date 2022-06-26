@@ -1,6 +1,6 @@
 <h2>Reactivos: <small>Dinámicos</small></h2>
 <hr>
-<form autocomplete="off">
+<form (ngSubmit)="guardar()" autocomplete="off" [formGroup]="miFormulario">
 
   <!--Nombre-->
   <div class="mb-3 row">
@@ -8,9 +8,17 @@
     <div class="col-sm-9">
       <input type="text"
             class="form-control"
-            placeholder="Nombre de la persona">
+            placeholder="Nombre de la persona"
+            formControlName="nombre">
+
+      <span class="form-text text-danger"
+            *ngIf="campoNoValido('nombre')">
+        Debe tener al menos 3 caracteres
+      </span>
     </div>
   </div>
+
+
   <!--Agregar favorito-->
   <div class="mb-3 row">
     <label class="col-sm-3 col-form-label">Agregar</label>
@@ -46,8 +54,7 @@
 
   <div class="mb-3 row">
     <div class="col-sm-12">
-      <button type="button"
-              (click)="1"
+      <button type="submit"
               class="btn btn-primary float-end">
             Guardar
       </button>

@@ -40,6 +40,7 @@ export class BasicosComponent implements OnInit{
       return;
     }
 
+    console.log(this.miFormulario.value);
     this.miFormulario.reset();
 
   }
